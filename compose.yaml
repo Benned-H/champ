@@ -1,0 +1,16 @@
+services:
+  # Service providing GUI support on macOS hosts
+  champ-mac:
+    extends: # Add config for GUIs and useful terminal properties
+      file: ./docker/core-compose.yaml
+      service: base-gui-mac-os
+
+    build:
+      context: .
+      target: champ-noetic
+    
+    image: bennedh/champ-noetic
+    
+    volumes:
+      # Mount this repository (a ROS workspace) into the container
+      - .:/docker/champ

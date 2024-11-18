@@ -1,6 +1,11 @@
-[submodule "src/champ/include/libchamp"]
-	path = src/champ/include/libchamp
+[submodule "src/champ/include/champ"]
+	path = src/champ/include/champ
 	url = https://github.com/chvmp/libchamp
+
 [submodule "src/champ_teleop/champ_teleop"]
 	path = src/champ_teleop/champ_teleop
 	url = https://github.com/chvmp/champ_teleop
+	
+[submodule "src/yocs_velocity_smoother"]
+	path = src/yocs_velocity_smoother
+	url = https://github.com/chvmp/yocs_velocity_smoother.git

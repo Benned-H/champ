@@ -1,0 +1,8 @@
+# Ignore catkin build directories
+build/
+devel/
+logs/
+.catkin_tools/
+
+# Ignore Hatch environments
+**/.hatch/*
