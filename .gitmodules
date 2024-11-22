@@ -12,6 +12,6 @@
 	url = https://github.com/chvmp/yocs_velocity_smoother
 	branch = master
 [submodule "docker/ros_docker"]
-	path = docker/ros_docker
+	path = ros_docker
 	url = https://github.com/Benned-H/ros_docker.git
 	branch = edit-compose
