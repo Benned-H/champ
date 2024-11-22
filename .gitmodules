@@ -9,6 +9,7 @@
 [submodule "src/yocs_velocity_smoother"]
 	path = src/yocs_velocity_smoother
 	url = https://github.com/chvmp/yocs_velocity_smoother.git
+
 [submodule "docker/ros_docker"]
 	path = docker/ros_docker
 	url = git@github.com:Benned-H/ros_docker.git
