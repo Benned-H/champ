@@ -1,0 +1,2 @@
+[tool.ruff] # Use ros_docker's Ruff config
+extend = "ros_docker/pyproject.toml"
