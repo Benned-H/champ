@@ -1,16 +1,2 @@
-[tool.ruff] # Use the same settings as Black
-line-length = 88
-indent-width = 4
-
-[tool.ruff.lint]
-select = ["ALL"]              # Default to all Ruff rules, add ignores as needed
-ignore = ["ANN101", "ANN204"] # Ignore type annotations on self and __init__
-unfixable = ["F401"]          # Disable 'fix' for unused imports
-
-[tool.ruff.format] # Use the same settings as Black
-quote-style = "double"
-indent-style = "space"
-
-[tool.ruff.lint.per-file-ignores]
-# Ignore Python package violations for the one-off Docker script
-"docker/*" = ["INP001"]
+[tool.ruff] # Use ros_docker's Ruff config
+extend = "ros_docker/pyproject.toml"

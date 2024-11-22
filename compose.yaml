@@ -1,12 +1,13 @@
 services:
   champ-nvidia-ubuntu: # Service for running CHAMP w/ NVIDIA GPU on an Ubuntu host
     extends: # Config for NVIDIA GPU on Ubuntu host
-      file: ./docker/ros_docker/docker/core-compose.yaml
+      file: ./ros_docker/compose/core-compose.yaml
       service: base-nvidia-ubuntu
 
-    build:
+    build: # Command:     docker compose --progress plain build champ-nvidia-ubuntu
       context: .
-      dockerfile: champ-noetic
+      dockerfile: ./ros_docker/dockerfiles/noetic.Dockerfile
+      target: install-catkin-deps
 
     image: bennedh/champ-noetic:nvidia-ubuntu
 

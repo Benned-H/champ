@@ -1,16 +1,16 @@
+# champ [![Build Status](https://travis-ci.org/chvmp/champ.svg?branch=master)](https://travis-ci.org/chvmp/champ)
 
-# champ [![Build Status](https://travis-ci.org/chvmp/champ.svg?branch=master)](https://travis-ci.org/chvmp/champ) 
 ROS Packages for CHAMP Quadruped Controller.
 
 ![champ](https://raw.githubusercontent.com/chvmp/champ/master/docs/images/robots.gif)
 
-CHAMP is an open source development framework for building new quadrupedal robots and developing new control algorithms. The control framework is based on [*"Hierarchical controller for highly dynamic locomotion utilizing pattern modulation and impedance control : implementation on the MIT Cheetah robot"*](https://dspace.mit.edu/handle/1721.1/85490).
+CHAMP is an open source development framework for building new quadrupedal robots and developing new control algorithms. The control framework is based on [_"Hierarchical controller for highly dynamic locomotion utilizing pattern modulation and impedance control : implementation on the MIT Cheetah robot"_](https://dspace.mit.edu/handle/1721.1/85490).
 
 Core Features:
 
 - Fully Autonomous (using ROS navigation Stack).
 - [Setup-assistant](https://github.com/chvmp/champ_setup_assistant) to configure newly built robots.
-- Collection of pre-configured [URDFs](https://github.com/chvmp/robots) like Anymal, MIT Mini Cheetah, Boston Dynamic's Spot and LittleDog. 
+- Collection of pre-configured [URDFs](https://github.com/chvmp/robots) like Anymal, MIT Mini Cheetah, Boston Dynamic's Spot and LittleDog.
 - Gazebo simulation environment.
 - Compatible with DIY quadruped projects like [SpotMicroAI](https://spotmicroai.readthedocs.io/en/latest/) and [OpenQuadruped](https://github.com/adham-elarabawy/open-quadruped).
 - Demo Applications like [TOWR](https://github.com/ethz-adrl/towr) and [chicken head](https://github.com/chvmp/chicken_head) stabilization.
@@ -20,6 +20,14 @@ Tested on:
 
 - Ubuntu 16.04 (ROS Kinetic)
 - Ubuntu 18.04 (ROS Melodic)
+
+## 0. Commands for Running in Docker
+
+```bash
+pip install ros_docker/
+scrape-ros-deps src/
+docker compose --progress plain build champ-nvidia-ubuntu
+```
 
 ## 1. Installation
 
@@ -56,12 +64,11 @@ You don't need a physical robot to run the following demos. If you're building a
 
 If you want to use a [joystick](https://www.logitechg.com/en-hk/products/gamepads/f710-wireless-gamepad.html) add joy:=true as an argument.
 
-
 ### 2.2 SLAM demo:
 
 #### 2.2.1 Run the Gazebo environment:
 
-    roslaunch champ_config gazebo.launch 
+    roslaunch champ_config gazebo.launch
 
 #### 2.2.2 Run gmapping package and move_base:
 
@@ -72,7 +79,7 @@ To start mapping:
 - Click '2D Nav Goal'.
 - Click and drag at the position you want the robot to go.
 
-   ![champ](https://raw.githubusercontent.com/chvmp/champ/master/docs/images/slam.gif)
+  ![champ](https://raw.githubusercontent.com/chvmp/champ/master/docs/images/slam.gif)
 
 - Save the map by running:
 
@@ -81,9 +88,9 @@ To start mapping:
 
 ### 2.3 Autonomous Navigation:
 
-#### 2.3.1 Run the Gazebo environment: 
+#### 2.3.1 Run the Gazebo environment:
 
-    roslaunch champ_config gazebo.launch 
+    roslaunch champ_config gazebo.launch
 
 #### 2.3.2 Run amcl and move_base:
 
@@ -94,35 +101,37 @@ To navigate:
 - Click '2D Nav Goal'.
 - Click and drag at the position you want the robot to go.
 
-   ![champ](https://raw.githubusercontent.com/chvmp/champ/master/docs/images/navigation.gif)
+  ![champ](https://raw.githubusercontent.com/chvmp/champ/master/docs/images/navigation.gif)
 
 ## 3. Running your own robot:
 
 There are two ways to run CHAMP on a real robot:
 
 Linux Machine
+
 - Use this ROS package to calculate the joint angles and send it to a hardware interface to control your actuators. You can follow these [guidelines](https://github.com/chvmp/champ/wiki/Hardware-Integration) to create your actuators' interface.
 
 Lightweight Version
-- Run CHAMP's [lightweight version](https://github.com/chvmp/firmware) on Teensy series microcontrollers and use it to directly control your actuators. 
+
+- Run CHAMP's [lightweight version](https://github.com/chvmp/firmware) on Teensy series microcontrollers and use it to directly control your actuators.
 
 ### 3.1 Generate robot configuration
 
-   - First generate a configuration package using [champ_setup_assistant](https://github.com/chvmp/champ_setup_assistant). Follow the instructions in the README to configure your own robot. The generated package contains:
+- First generate a configuration package using [champ_setup_assistant](https://github.com/chvmp/champ_setup_assistant). Follow the instructions in the README to configure your own robot. The generated package contains:
 
-        - URDF path to your robot.
-        - Joints and Links map to help the controller know the semantics of the robot.
-        - Gait parameters.
-        - Hardware Drivers.
-        - Navigation parameters (move_base, amcl and gmapping).
-        - Microcontroller header files for gait and lightweight robot description. This only applies to robot builds that use microcontroller to run the quadruped controller.
+  - URDF path to your robot.
+  - Joints and Links map to help the controller know the semantics of the robot.
+  - Gait parameters.
+  - Hardware Drivers.
+  - Navigation parameters (move_base, amcl and gmapping).
+  - Microcontroller header files for gait and lightweight robot description. This only applies to robot builds that use microcontroller to run the quadruped controller.
 
-     As a reference, you can check out the collection of robots that have been pre-configured [here](https://github.com/chvmp/robots). In the list are some of the popular quadruped robots like Anymal, MIT Mini Cheetah, Boston Dynamic's LittleDog, and SpotMicroAI. Feel free to download the configuration packages in your catkin workspaces 'src' directory to try.
+  As a reference, you can check out the collection of robots that have been pre-configured [here](https://github.com/chvmp/robots). In the list are some of the popular quadruped robots like Anymal, MIT Mini Cheetah, Boston Dynamic's LittleDog, and SpotMicroAI. Feel free to download the configuration packages in your catkin workspaces 'src' directory to try.
 
-   - Next, build your workspace so your newly generated package can be found:
+- Next, build your workspace so your newly generated package can be found:
 
-         cd <your_ws>
-         catkin_make
+      cd <your_ws>
+      catkin_make
 
 ### 3.2 Base Driver:
 
@@ -132,22 +141,22 @@ This will run the quadruped controller and all sensor/hardware drivers:
 
 Available Parameters:
 
-  - **rviz** - Launch together with RVIZ. Default: false
+- **rviz** - Launch together with RVIZ. Default: false
 
-  - **lite** - Always set this to true if you're using a microcontroller to run the algorithms. Default false.
+- **lite** - Always set this to true if you're using a microcontroller to run the algorithms. Default false.
 
 Example Usage:
 
 View your newly configured robot:
 
     roslaunch <myrobot_config> bringup.launch rviz:true
-    
+
 Run real robot with a microcontroller:
 
     roslaunch <myrobot_config> bringup.launch lite:=true
 
-
 ### 3.3 Creating a map:
+
 The base driver described in 3.2 must be running to run gmapping and move_base.
 
 Run gmapping package and move_base:
@@ -156,14 +165,15 @@ Run gmapping package and move_base:
 
 To open RVIZ and view the map:
 
-    roscd champ_navigation/rviz 
+    roscd champ_navigation/rviz
     rviz -d navigate.rviz
 
 To start mapping:
+
 - Click '2D Nav Goal'.
 - Click and drag at the position you want the robot to go.
 
-   ![champ](https://raw.githubusercontent.com/chvmp/champ/master/docs/images/slam.gif)
+  ![champ](https://raw.githubusercontent.com/chvmp/champ/master/docs/images/slam.gif)
 
 - Save the map by running:
 
@@ -180,7 +190,7 @@ Run amcl and move_base:
 
 To open RVIZ and view the map:
 
-    roscd champ_navigation/rviz 
+    roscd champ_navigation/rviz
     rviz -d navigate.rviz
 
 To navigate:
@@ -188,7 +198,7 @@ To navigate:
 - Click '2D Nav Goal'.
 - Click and drag at the position you want the robot to go.
 
-   ![champ](https://raw.githubusercontent.com/chvmp/champ/master/docs/images/navigation.gif)
+  ![champ](https://raw.githubusercontent.com/chvmp/champ/master/docs/images/navigation.gif)
 
 ### 3.5 Running your robot in Gazebo
 
@@ -196,9 +206,9 @@ Run Gazebo and the base driver in simulation mode:
 
     roslaunch <myrobot_config> gazebo.launch
 
-* Take note that in order for this to work, the URDF has to be Gazebo compatible and has [ros_control](http://gazebosim.org/tutorials/?tut=ros_control) capability. The controllers have been set-up so all you need is to add the transmission of the actuators. You also need to get the physics parameters right like your mass, inertia, and foot friction. 
+- Take note that in order for this to work, the URDF has to be Gazebo compatible and has [ros_control](http://gazebosim.org/tutorials/?tut=ros_control) capability. The controllers have been set-up so all you need is to add the transmission of the actuators. You also need to get the physics parameters right like your mass, inertia, and foot friction.
 
-   Some useful resources on getting these parameters right:
+  Some useful resources on getting these parameters right:
 
   - Inertial Calculation - https://github.com/tu-darmstadt-ros-pkg/hector_models/blob/indigo-devel/hector_xacro_tools/urdf/inertia_tensors.urdf.xacro
 
@@ -212,7 +222,7 @@ You can also check out [this](https://github.com/moribots/spot_mini_mini/pull/7)
 
 Run Gazebo and default simulation world:
 
-    roslaunch champ_gazebo spawn_world.launch 
+    roslaunch champ_gazebo spawn_world.launch
 
 You can also load your own world file by passing your world's path to 'gazebo_world' argument:
 
@@ -222,9 +232,7 @@ Spawning a robot:
 
     roslaunch champ_config spawn_robot.launch robot_name:=<unique_robot_name> world_init_x:=<x_position> world_init_y:=<y_position>
 
-    
-* Every instance of the spawned robot must have a unique robot name to prevent the topics and transforms from clashing.
-
+- Every instance of the spawned robot must have a unique robot name to prevent the topics and transforms from clashing.
 
 ## 4. Tuning gait parameters
 
