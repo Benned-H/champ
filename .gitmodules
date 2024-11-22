@@ -1,15 +1,17 @@
+
 [submodule "src/champ/include/champ"]
 	path = src/champ/include/champ
 	url = https://github.com/chvmp/libchamp
-
-[submodule "src/champ_teleop/champ_teleop"]
-	path = src/champ_teleop/champ_teleop
+	branch = master
+[submodule "src/champ_teleop"]
+	path = src/champ_teleop
 	url = https://github.com/chvmp/champ_teleop
-	
+	branch = master
 [submodule "src/yocs_velocity_smoother"]
 	path = src/yocs_velocity_smoother
-	url = https://github.com/chvmp/yocs_velocity_smoother.git
-
+	url = https://github.com/chvmp/yocs_velocity_smoother
+	branch = master
 [submodule "docker/ros_docker"]
 	path = docker/ros_docker
-	url = git@github.com:Benned-H/ros_docker.git
+	url = https://github.com/Benned-H/ros_docker.git
+	branch = edit-compose
