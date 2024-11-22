@@ -6,3 +6,6 @@ logs/
 
 # Ignore Hatch environments
 **/.hatch/*
+
+# Ignore VS Code settings
+.vscode/
