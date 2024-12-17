@@ -18,3 +18,6 @@
 [submodule "src/spot_ros"]
 	path = src/spot_ros
 	url = https://github.com/Benned-H/spot_ros
+[submodule "src/champ_setup_assistant"]
+	path = src/champ_setup_assistant
+	url = git@github.com:Benned-H/champ_setup_assistant.git
